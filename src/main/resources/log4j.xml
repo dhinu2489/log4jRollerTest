@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+    <appender name="file" class="org.apache.log4j.rolling.RollingFileAppender">
+        <param name="encoding" value="UTF-8" />
+        <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+            <param name="activeFileName" value="c:/eRAM/Demo4/logs/app/eRAMLogger.log" />
+            <param name="fileNamePattern"
+                   value="c:/eRAM/Demo4/logs/app/eRAMLogger.%d{dd.MM.yyyy_HH.mm.ss}.log" />
+        </rollingPolicy>
+
+        <triggeringPolicy class="org.apache.log4j.rolling.SizeBasedTriggeringPolicy">
+            <param name="MaxFileSize" value="100"/>
+        </triggeringPolicy>
+
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="conversionPattern"
+                   value="[%d | %t | %X{serverThreadId} | %-5p | %c : %L] %m%n" />
+        </layout>
+    </appender>
+    <root>
+        <level value="debug" />
+        <appender-ref ref="file" />
+    </root>
+</log4j:configuration>
